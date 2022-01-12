@@ -1,0 +1,21 @@
+version: '3'
+services:
+    mongo:
+        image: mongo
+        container_name: sample-mongo-db
+        ports:
+            - 27017:27017
+        volumes:
+            - ./mongo/db:/data/db
+            - ./mongo/configdb:/data/configdb
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: sampleAdmin
+            MONGO_INITDB_ROOT_PASSWORD: thisIsTest
+            MONGO_INITDB_DATABASE: sample-db
+            TZ: Asia/Tokyo
+    redis:
+        image: "redis:latest"
+        ports:
+          - 6379:6379
+        volumes:
+          - ./redis:/data
